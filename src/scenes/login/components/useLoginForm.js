@@ -5,7 +5,7 @@ import { ErrorContext } from "../../../context/ErrorContext";
 export default () => {
     const [username, setUsername] = useState("");
 
-    const validForm = useMemo(() => username && username.length < 16, [username]);
+    const validForm = useMemo(() => username && username.length <= 16, [username]);
 
     const { login } = useContext(AppContext);
     const { showError } = useContext(ErrorContext);

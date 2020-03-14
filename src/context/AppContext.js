@@ -7,7 +7,7 @@ function useQuery() {
 
 const Store = ({ children }) => {
     const [username, setUsername] = React.useState("");
-    const [loggedIn, setloggedIn] = React.useState(true);
+    const [loggedIn, setloggedIn] = React.useState(false);
 
     // TODO handle invalid queryParams
     const query = useQuery();
