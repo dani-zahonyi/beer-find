@@ -8,9 +8,7 @@ const UserData = () => {
         <>
             {" "}
             <span className="welcomeText">Hi, {username}!</span>
-            <button onClick={logout} style={{ background: colors.beerDark }}>
-                Logout
-            </button>
+            <button onClick={logout}>Logout</button>
         </>
     );
 };

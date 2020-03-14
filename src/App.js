@@ -5,6 +5,7 @@ import NavBar from "./components/navbar";
 import AppStore, { AppContext } from "./context/AppContext";
 import Home from "./scenes/home";
 
+import { BrowserRouter } from "react-router-dom";
 const Main = () => {
     return (
         <div>
@@ -15,11 +16,13 @@ const Main = () => {
 
 export default function App() {
     return (
-        <AppStore>
-            <NavBar />
-            <AppContext.Consumer>
-                {({ loggedIn }) => (loggedIn ? <Main /> : <Login />)}
-            </AppContext.Consumer>
-        </AppStore>
+        <BrowserRouter>
+            <AppStore>
+                <NavBar />
+                <AppContext.Consumer>
+                    {({ loggedIn }) => (loggedIn ? <Main /> : <Login />)}
+                </AppContext.Consumer>
+            </AppStore>
+        </BrowserRouter>
     );
 }

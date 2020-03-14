@@ -3,7 +3,7 @@ import React, { Component, Fragment, useMemo } from "react";
 import { useContext } from "react";
 import { AppContext } from "../../../context/AppContext";
 
-const Pagination = ({ getPage, currPage }) => {
+const Pagination = ({ getPage, currPage, hasNext = true }) => {
     const prevPages = useMemo(() => {
         if (currPage <= 1) return [];
         if (currPage > 3) {
@@ -26,7 +26,7 @@ const Pagination = ({ getPage, currPage }) => {
                 )
             )}
             <button disabled>{currPage}</button>
-            <button onClick={() => getPage(currPage + 1)}>{currPage + 1}</button>
+            {hasNext && <button onClick={() => getPage(currPage + 1)}>{currPage + 1}</button>}
         </div>
     );
 };

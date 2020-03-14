@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import PercentageInput from "./components/PercentageFilter";
 import "./filter.css";
-export default () => {
+export default ({ onFilter }) => {
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(100);
     const [name, setName] = useState();
     const handleChange = e => setName(e.target.value);
+    const filterButtonHandler = () => {
+        onFilter({ min, max, name });
+    };
+
     return (
         <div className="filterBar">
             <div className="nameFilter">
@@ -18,7 +22,7 @@ export default () => {
                 -
                 <PercentageInput min={min} onSetValue={setMax} initValue={100} />
             </div>
-            <button>Filter</button>
+            <button onClick={filterButtonHandler}>Filter</button>
         </div>
     );
 };
