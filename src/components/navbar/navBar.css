@@ -5,6 +5,17 @@ nav {
   padding-left: 5px;
   padding-right: 5px;
 }
+nav div {
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 600px) {
+
+  nav {
+    height: 120px;
+    flex-direction: column;
+  }
+}
 
 nav .logoWrapper {
   display: flex;
