@@ -1,0 +1,48 @@
+.detailsView {
+    padding-left: 50px;
+    padding-right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.detailsView .title {
+    font-size: 2em;
+    width: calc(100vw - 20px);
+    border-top: 3px solid #F7CB15;
+}
+.detailsView .subTitle {
+    width: calc(100vw - 20px);
+    font-size: 1.2em;
+    border-bottom: 3px solid #F7CB15;
+}
+.detailsView span {
+    display: block;
+}
+
+.detailsView .content {
+    display: flex;
+    max-width: 700px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.detailsView .content img {
+    margin-right: 15px;
+    height: calc(100vh - 140px)
+}
+
+.detailsView .content .details {
+    height: calc(100vh - 140px);
+    overflow-y: auto;
+    text-align: left;
+    width: 60%
+}
+
+.detailsView .content .details .infoBlock {
+    margin-bottom: 10px;
+}
+
+.detailsView .content .details .infoBlock .detailHeader{
+    font-size: 1.2em;
+    color: #DB3A34
+}
