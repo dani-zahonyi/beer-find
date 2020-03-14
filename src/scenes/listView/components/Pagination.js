@@ -1,17 +1,14 @@
-import React, { Component, Fragment, useMemo } from "react";
+import React, { useMemo } from "react";
 
-import { useContext } from "react";
-import { AppContext } from "../../../context/AppContext";
-
-const Pagination = ({ getPage, currPage, hasNext = true }) => {
+const Pagination = ({ getPage, currentPage, hasNext = true }) => {
     const prevPages = useMemo(() => {
-        if (currPage <= 1) return [];
-        if (currPage > 3) {
-            return [1, "...", currPage - 2, currPage - 1];
+        if (currentPage <= 1) return [];
+        if (currentPage > 3) {
+            return [1, "...", currentPage - 2, currentPage - 1];
         } else {
-            return Array.from(Array(currPage - 1).keys()).map(r => r + 1);
+            return Array.from(Array(currentPage - 1).keys()).map(r => r + 1);
         }
-    }, [currPage]);
+    }, [currentPage]);
     return (
         <div>
             {prevPages.map(pageNum =>
@@ -25,8 +22,8 @@ const Pagination = ({ getPage, currPage, hasNext = true }) => {
                     </button>
                 )
             )}
-            <button disabled>{currPage}</button>
-            {hasNext && <button onClick={() => getPage(currPage + 1)}>{currPage + 1}</button>}
+            <button disabled>{currentPage}</button>
+            {hasNext && <button onClick={() => getPage(currentPage + 1)}>{currentPage + 1}</button>}
         </div>
     );
 };

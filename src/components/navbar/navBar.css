@@ -9,7 +9,7 @@ nav div {
   display: flex;
   align-items: center;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
 
   nav {
     height: 120px;

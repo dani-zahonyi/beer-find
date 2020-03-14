@@ -1,26 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PercentageInput from "./components/PercentageFilter";
 import "./filter.css";
-export default ({ onFilter }) => {
-    const [min, setMin] = useState(0);
-    const [max, setMax] = useState(100);
-    const [name, setName] = useState();
-    const handleChange = e => setName(e.target.value);
+import { AppContext } from "../../context/AppContext";
+export default () => {
+    const { filterValues, setFilterValues, reloadBeers, setCurrentPage, currentPage } = useContext(
+        AppContext
+    );
+
+    const handleChange = e => setFilterValues({ ...filterValues, name: e.target.value });
     const filterButtonHandler = () => {
-        onFilter({ min, max, name });
+        if (currentPage !== 1) {
+            setCurrentPage(1);
+        } else {
+            reloadBeers();
+        }
     };
 
     return (
-        <div className="filterBar">
+        <div
+            className="filterBar"
+            onKeyPress={event => {
+                if (event.key === "Enter") {
+                    filterButtonHandler();
+                }
+            }}
+        >
             <div className="nameFilter">
                 <label>Name</label>
-                <input placeholder="name" onChange={handleChange} value={name} />
+                <input placeholder="name" onChange={handleChange} value={filterValues.name} />
             </div>
             <div className="space"></div>
             <div className="ABVFilter">
-                <PercentageInput max={max} onSetValue={setMin} initValue={0} />
+                <PercentageInput
+                    max={filterValues.max}
+                    onSetValue={min => setFilterValues({ ...filterValues, min })}
+                    initValue={filterValues.min}
+                />
                 -
-                <PercentageInput min={min} onSetValue={setMax} initValue={100} />
+                <PercentageInput
+                    min={filterValues.min}
+                    onSetValue={max => setFilterValues({ ...filterValues, max })}
+                    initValue={filterValues.max}
+                />
             </div>
             <button onClick={filterButtonHandler}>Filter</button>
         </div>

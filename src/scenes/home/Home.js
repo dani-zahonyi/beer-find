@@ -3,11 +3,11 @@ import ListView from "../listView";
 import Details from "../details";
 
 import { Switch, Route } from "react-router-dom";
-const Home = props => {
+const Home = () => {
     return (
         <div className="sceneWrapper">
             <Switch>
-                <Route exact path="/list">
+                <Route path="/list">
                     <ListView />
                 </Route>
                 <Route path="/details/:id">

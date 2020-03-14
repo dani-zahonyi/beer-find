@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Loader from "../../components/loader";
 import { useParams, useHistory } from "react-router-dom";
 
 import "./detailsView.css";
 import colors from "../../constants/colors";
+import { ErrorContext } from "../../context/ErrorContext";
 
 const loadBeer = async id => {
     const url = `https://api.punkapi.com/v2/beers/${id}`;
@@ -23,10 +24,12 @@ const DetailCard = ({ title, detail }) => {
     );
 };
 
-const Details = props => {
+const Details = () => {
     let { id } = useParams();
     const [beer, setBeer] = useState({});
     const [loading, setLoading] = useState(true);
+    const { showError } = useContext(ErrorContext);
+
     useEffect(() => {
         loadBeer(id)
             .then(([data]) => {
@@ -35,11 +38,11 @@ const Details = props => {
             })
             .catch(e => {
                 setLoading(false);
-                // setError
+                showError("Something wrong happened during fetch.");
             });
     }, [id]);
     const history = useHistory();
-    const backButtonHandler = () => history.push("/list");
+    const backButtonHandler = () => history.goBack();
 
     if (loading) return <Loader />;
     return (
@@ -60,7 +63,7 @@ const Details = props => {
                 </button>
             </div>
             <div className="content">
-                <img src={beer.image_url} />
+                <img src={beer.image_url} alt={beer.name} />
                 <div className="details">
                     <DetailCard title="Description" detail={beer.description} />
                     <DetailCard title="AVB" detail={beer.abv + "%"} />

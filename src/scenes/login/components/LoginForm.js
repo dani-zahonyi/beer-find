@@ -1,29 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import colors from "../../../constants/colors";
-import { AppContext } from "../../../context/AppContext";
+import useLogin from "./useLoginForm";
 
-const useLogin = () => {
-    const [username, setUsername] = useState("");
-    const validForm = React.useMemo(() => username && username.length < 16, [username]);
-    const inputHandler = e => setUsername(e.target.value);
-    const { login } = React.useContext(AppContext);
-    const submitHandler = async event => {
-        event.preventDefault();
-        const json = await fetch("https://yesno.wtf/api").then(resp => resp.json());
-        if (json.answer === "yes") {
-            login(username);
-        } else {
-            // handlerError()
-        }
-    };
-
-    return { username, inputHandler, submitHandler, validForm };
-};
 const LoginForm = () => {
     const { username, inputHandler, submitHandler, validForm } = useLogin();
 
     return (
-        <form className="loginForm" onSubmit={submitHandler}>
+        <form
+            className="loginForm"
+            onSubmit={submitHandler}
+            onKeyPress={event => {
+                if (event.key === "Enter") {
+                    submitHandler();
+                }
+            }}
+        >
             <svg
                 style={{ height: 60, marginBottom: 10, opacity: 0.7 }}
                 viewBox="0 0 90 114"
