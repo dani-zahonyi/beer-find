@@ -1,0 +1,10 @@
+.filterBar {
+    display: flex;
+    padding: 0 10px;
+}
+.filterBar {
+    color: #DB3A34
+}
+.filterBar label {
+    margin-right: 10px;
+}
