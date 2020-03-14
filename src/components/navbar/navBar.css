@@ -3,6 +3,16 @@ nav {
   display: flex;
   align-items: center;
   padding-left: 5px;
-
   padding-right: 5px;
+}
+
+nav .logoWrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+nav .welcomeText {
+  color: #DB3A34;
+  font-size: 2em;
 }

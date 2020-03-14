@@ -3,7 +3,7 @@ import logo from "../../../assets/grape_logo.svg";
 import colors from "../../../constants/colors";
 const Logo = () => {
     return (
-        <>
+        <div className="logoWrapper">
             <svg
                 id="Layer_1"
                 viewBox="0 0 2282 744"
@@ -37,7 +37,7 @@ const Logo = () => {
                 <path d="M1643.55,609.53c0-11.15-.16-22.29.09-33.43.09-3.82-1.49-4.5-4.69-4.23-2.67.23-5.52-.91-5.47,3.94q.36,33.68,0,67.36c0,4.56,2.65,3.54,5.14,3.61,2.68.07,5.16.59,5-3.82C1643.33,631.82,1643.55,620.67,1643.55,609.53Z" />
             </svg>
             <span style={styles.title}>Beer finder</span>
-        </>
+        </div>
     );
 };
 
