@@ -23,13 +23,15 @@ const ErrorMsgWrapper = () => {
             <div
                 style={{
                     background: colors.primary,
-                    width: 500,
+                    minWidth: 250,
                     padding: 30,
                     borderRadius: 15,
                     top: 15,
                     position: "absolute",
                     zIndex: 99,
-                    left: "calc( 50vw - 250px)"
+                    left: "50vw",
+                    WebkitTransform: "translateX(-50%)",
+                    transform: "translateX(-50%)"
                 }}
             >
                 {error}

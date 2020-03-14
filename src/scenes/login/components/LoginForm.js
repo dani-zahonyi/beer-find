@@ -11,7 +11,7 @@ const LoginForm = () => {
             onSubmit={submitHandler}
             onKeyPress={event => {
                 if (event.key === "Enter") {
-                    submitHandler();
+                    submitHandler(event);
                 }
             }}
         >

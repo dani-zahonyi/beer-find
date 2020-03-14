@@ -42,5 +42,5 @@ label {
 .scene {
   height: calc(100vh - 60px);
     width: 100vw;
-    overflow-y: scroll;
+    overflow-y: autp;
 }
