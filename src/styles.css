@@ -15,6 +15,10 @@ button {
   padding: 5px 23px;
 }
 
+button:hover {
+  background: #F7CB15;
+}
+
 button:disabled {
     opacity: 0.5;
     cursor: not-allowed

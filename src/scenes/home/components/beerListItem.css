@@ -1,0 +1,25 @@
+.beerListItem {
+    height: 300px;
+    width: 300px;
+    display: inline-block;
+    border-radius: 15px;
+    border: 2px solid  #DB3A34;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.beerListItem img {
+    height: 230px;
+}
+
+.beerListItem-mask {
+    position: relative;
+    top: 0px;
+    height: 300px;
+    width: 300px;
+    border-radius: 15px;
+    margin-bottom: -300px;
+    background: #F7CB15;
+    mix-blend-mode: darken;
+}

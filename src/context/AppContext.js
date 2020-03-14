@@ -2,7 +2,8 @@ import React from "react";
 
 const Store = ({ children }) => {
     const [username, setUsername] = React.useState("");
-    const [loggedIn, setloggedIn] = React.useState();
+    const [loggedIn, setloggedIn] = React.useState(true);
+    const [currPage, setCurrentPage] = React.useState(1);
 
     return (
         <AppContext.Provider
@@ -16,7 +17,9 @@ const Store = ({ children }) => {
                 logout: () => {
                     setloggedIn(false);
                     setUsername("");
-                }
+                },
+                currPage,
+                setCurrentPage
             }}
         >
             {children}
