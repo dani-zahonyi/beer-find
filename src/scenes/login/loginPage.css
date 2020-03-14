@@ -1,53 +1,44 @@
 .loginPage {
-  height: calc(100vh - 60px);
-  width: 100vw;
-  display: flex;
-justify-content: center;
-align-items: center;
-  background: linear-gradient(
-    90deg,
-    #d3b428 0%,
-    #f7cb15 15%,
-    #f6ca15 85%,
-    #d3b428 100%
-  );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #d3b428 0%, #f7cb15 15%, #f6ca15 85%, #d3b428 100%);
 }
 
 .loginForm {
-  display: flex;
-  border: 5px solid #DB3A34;
-  background: white;
-  border-radius: 15px;
-  padding: 15px 30px 60px 30px;
-  flex-direction: column;
+    display: flex;
+    border: 5px solid #db3a34;
+    background: white;
+    border-radius: 15px;
+    padding: 15px 30px 60px 30px;
+    flex-direction: column;
 }
 
 .loginForm label {
-  align-self: flex-start;
-  font-weight: 600;
-  color: #DB3A34;
+    align-self: flex-start;
+    font-weight: 600;
 }
 .loginForm input {
-  margin-top: 5px;
-  text-align: center;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 23px;
-
+    margin-top: 5px;
+    text-align: center;
 }
 
-.loginForm input[type=text] {
-  color: #DB3A34;
-  height: 1.4em;
-  font-size: 1.2em;
-  line-height: 1.2em;
-  border: 2px solid;
+.loginForm input[type="text"] {
+    color: #db3a34;
+    height: 1.4em;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    border: 2px solid;
 }
 
-.loginForm input[type=submit] {
-  align-self: flex-end;
-  background: #DB3A34;
-  color: white;
-  cursor: pointer
+.loginForm input[type="submit"] {
+    align-self: flex-end;
+    background: #db3a34;
+    color: white;
+    cursor: pointer;
 }
 
+.loginForm input[type="submit"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

@@ -6,3 +6,37 @@ body {
   text-align: center;
 }
 
+button {
+  background: #DB3A34;
+  border: none;
+  color: white;
+  cursor: pointer;
+
+  padding: 5px 23px;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed
+}
+
+input {
+  color: #DB3A34;
+  border: 2px solid;
+  border-radius: 5px;
+  padding: 5px 23px;
+}
+label {
+
+  color: #DB3A34;
+}
+
+.space {
+  flex: 1
+}
+
+.scene {
+  height: calc(100vh - 60px);
+    width: 100vw;
+    overflow-y: scroll;
+}

@@ -5,7 +5,7 @@ import { LoginForm } from ".";
 
 export default () => {
     return (
-        <div className="loginPage">
+        <div className="loginPage scene">
             <LoginForm />
         </div>
     );

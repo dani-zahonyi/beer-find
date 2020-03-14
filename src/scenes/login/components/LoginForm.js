@@ -1,8 +1,29 @@
 import React, { useState } from "react";
 import colors from "../../../constants/colors";
+import { AppContext } from "../../../context/AppContext";
+
+const useLogin = () => {
+    const [username, setUsername] = useState("");
+    const validForm = React.useMemo(() => username && username.length < 16, [username]);
+    const inputHandler = e => setUsername(e.target.value);
+    const { login } = React.useContext(AppContext);
+    const submitHandler = async event => {
+        event.preventDefault();
+        const json = await fetch("https://yesno.wtf/api").then(resp => resp.json());
+        if (json.answer === "yes") {
+            login(username);
+        } else {
+            // handlerError()
+        }
+    };
+
+    return { username, inputHandler, submitHandler, validForm };
+};
 const LoginForm = () => {
+    const { username, inputHandler, submitHandler, validForm } = useLogin();
+
     return (
-        <form className="loginForm">
+        <form className="loginForm" onSubmit={submitHandler}>
             <svg
                 style={{ height: 60, marginBottom: 10, opacity: 0.7 }}
                 viewBox="0 0 90 114"
@@ -16,10 +37,9 @@ const LoginForm = () => {
                 <path d="M36.1749 8.73978C36.1671 7.01694 36.6676 5.33056 37.613 3.89439C38.5584 2.45823 39.906 1.33695 41.4851 0.672684C43.0642 0.00841604 44.8037 -0.16893 46.4831 0.163125C48.1624 0.495181 49.706 1.32169 50.9182 2.53788C52.1305 3.75407 52.9567 5.30518 53.2922 6.99461C53.6277 8.68404 53.4574 10.4357 52.8029 12.0276C52.1483 13.6195 51.039 14.9799 49.6156 15.9364C48.1921 16.8929 46.5186 17.4025 44.8072 17.4004C43.6751 17.4036 42.5536 17.182 41.5067 16.7482C40.4599 16.3144 39.5083 15.6771 38.7065 14.8726C37.9047 14.0682 37.2683 13.1124 36.8339 12.06C36.3995 11.0077 36.1756 9.87939 36.1749 8.73978V8.73978Z" />
                 <path d="M85.6906 104.485C85.6953 106.208 85.1917 107.894 84.2436 109.329C83.2955 110.764 81.9456 111.883 80.365 112.544C78.7844 113.206 77.0443 113.38 75.3652 113.045C73.6861 112.71 72.1436 111.88 70.9333 110.662C69.7231 109.443 68.8994 107.89 68.5668 106.2C68.2342 104.51 68.4077 102.758 69.0652 101.167C69.7227 99.5758 70.8346 98.2171 72.26 97.263C73.6855 96.3088 75.3602 95.8022 77.072 95.8073C79.3574 95.8096 81.5485 96.7246 83.1644 98.3516C84.7802 99.9786 85.6888 102.184 85.6906 104.485Z" />
             </svg>
-
             <label>Login</label>
-            <input placeholder="Username" type="text" />
-            <input type="submit" value="Login" />
+            <input placeholder="Username" type="text" onChange={inputHandler} value={username} />
+            <input type="submit" value="Login" disabled={!validForm} />
         </form>
     );
 };
