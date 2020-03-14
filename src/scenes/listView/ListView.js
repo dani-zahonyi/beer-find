@@ -27,13 +27,20 @@ const BeerListView = props => {
                         currentPage={currentPage}
                         getPage={page => setCurrentPage(page)}
                     />
-                    {beers.map(beer => (
-                        <BeerListItem
-                            key={beer.id}
-                            {...beer}
-                            onClick={handleListItemClick}
-                        ></BeerListItem>
-                    ))}
+                    {beers.length ? (
+                        beers.map(beer => (
+                            <BeerListItem
+                                key={beer.id}
+                                {...beer}
+                                onClick={handleListItemClick}
+                            ></BeerListItem>
+                        ))
+                    ) : (
+                        <>
+                            <p>No beers for you this time.</p>
+                            <p>Try again with different filter values.</p>
+                        </>
+                    )}
                     <Pagination
                         hasNext={beers.length === PAGE_LIMIT}
                         currentPage={currentPage}

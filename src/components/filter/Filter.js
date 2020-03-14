@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useMemo, useContext } from "react";
 import PercentageInput from "./components/PercentageFilter";
 import "./filter.css";
 import { AppContext } from "../../context/AppContext";
@@ -15,7 +15,16 @@ export default () => {
             reloadBeers();
         }
     };
-
+    const filtersChanged = useMemo(() => {
+        return (
+            filterValues.name !== "" ||
+            (filterValues.min !== 0 && filterValues.min !== "0") ||
+            filterValues.max != 100
+        );
+    }, [filterValues.name, filterValues.min, filterValues.max]);
+    const clearFiltersButtonHandler = () => {
+        setFilterValues({ name: "", min: 0, max: 100 });
+    };
     return (
         <div
             className="filterBar"
@@ -34,16 +43,19 @@ export default () => {
                 <PercentageInput
                     max={filterValues.max}
                     onSetValue={min => setFilterValues({ ...filterValues, min })}
-                    initValue={filterValues.min}
+                    value={filterValues.min}
                 />
                 -
                 <PercentageInput
                     min={filterValues.min}
                     onSetValue={max => setFilterValues({ ...filterValues, max })}
-                    initValue={filterValues.max}
+                    value={filterValues.max}
                 />
             </div>
             <button onClick={filterButtonHandler}>Filter</button>
+            <button disabled={!filtersChanged} onClick={clearFiltersButtonHandler}>
+                Clear Filters
+            </button>
         </div>
     );
 };
